@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="C:/Users/TUF GAMING/Desktop/Portfolio Projects/Superstore Sales/ss.db" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser pragmas query" current="3"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="125"/><column_width id="3" width="3186"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,10:mainSuperstore"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="Superstore" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort><column index="17" mode="1"/></sort><column_widths><column index="1" value="57"/><column index="2" value="80"/><column index="3" value="130"/><column index="4" value="117"/><column index="5" value="124"/><column index="6" value="172"/><column index="7" value="98"/><column index="8" value="107"/><column index="9" value="138"/><column index="10" value="117"/><column index="11" value="117"/><column index="12" value="70"/><column index="13" value="145"/><column index="14" value="116"/><column index="15" value="131"/><column index="16" value="300"/><column index="17" value="84"/><column index="18" value="186"/><column index="19" value="176"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">SELECT *
+FROM Superstore
+asdad</sql><sql name="SQL 1 (1)">/******  Data Cleansing ******/
+
+-- OrderDate Standartization
+
+Select * 
+from [DBsuperstore].[dbo].[SuperstoreSales];
+
+Select Order_date, CONVERT(date, Order_date)
+From [DBsuperstore].[dbo].[SuperstoreSales];
+
+Update [DBsuperstore].[dbo].[SuperstoreSales]
+SET Order_date = CONVERT(date, Order_date);
+
+
+Alter Table [DBsuperstore].[dbo].[SuperstoreSales]
+Add OrderDateConverted DATE;
+
+UPDATE [DBsuperstore].[dbo].[SuperstoreSales]
+SET OrderDateConverted = CONVERT(date, Order_date);
+
+-------------------------------------------------------------------------------------------------------
+
+-- ShipDate Standartization
+
+Select * 
+from [DBsuperstore].[dbo].[SuperstoreSales];
+
+Select Ship_date, CONVERT(date, Ship_date)
+From [DBsuperstore].[dbo].[SuperstoreSales];
+
+Update [DBsuperstore].[dbo].[SuperstoreSales]
+SET Ship_date = CONVERT(date, Ship_date);
+
+
+Alter Table [DBsuperstore].[dbo].[SuperstoreSales]
+Add ShipDateConverted DATE;
+
+UPDATE [DBsuperstore].[dbo].[SuperstoreSales]
+SET ShipDateConverted = CONVERT(date, Ship_date);
+
+-------------------------------------------------------------------------------------------------------
+
+-- Remove Duplicates
+
+
+Select * 
+from ( select * , ROW_NUMBER() over (Partition by Customer_Name,Order_ID,Product_ID,Product_name ,Sales order by Customer_ID ) as rn from [DBsuperstore].[dbo].[SuperstoreSales] ) x
+where x.rn &gt; 1;
+
+-- There's only 1 duplicate which is Row_ID = 3407
+Delete from [DBsuperstore].[dbo].[SuperstoreSales]
+Where Row_ID = 3407
+-------------------------------------------------------------------------------------------------------
+
+-- Remove Unuse Column 
+SELECT * 
+from [DBsuperstore].[dbo].[SuperstoreSales]
+
+ALTER TABLE [DBsuperstore].[dbo].[SuperstoreSales]
+DROP COLUMN Order_Date, Ship_Date
+
+-------------------------------------------------------------------------------------------------------
+
+/* Exploratory Data Analysis */
+
+
+
+-- Investigate The Most Value Customer
+
+SELECT Customer_ID,Customer_Name ,  Segment, Country, City, State, Category, Sub_Category , Sales,  round(sum(Sales),2) [sum_sales]
+FROM Superstore
+GROUP BY Customer_Name
+order by [sum_sales] DESC
+LIMIT 10;
+
+SELECT Customer_ID,Customer_Name ,  Segment, OrderDateConverted, Product_Name, Country, City, State, Category, Sub_Category , Sales
+FROM Superstore
+WHERE Customer_Name = &quot;Sean Miller&quot;
+ORDER BY OrderDateConverted DESC
+
+
+-------------------------------------------------------------------------------------------------------
+
+-- Explore Top Sales Category
+
+SELECT Category, count(Category)[countCate]
+FROM Superstore
+GROUP by Category
+ORDER by [countCate] DESC
+
+SELECT Category, count(Category)[countCate], round(avg(Sales),0) [AVG Sales], round(sum(Sales),0)[SUM Sales]
+from Superstore 
+group by Category
+order by [SUM Sales] desc
+
+
+
+SELECT Customer_ID, Customer_Name, Segment, Country, City, State, Category, Sub_Category , Sales
+FROM Superstore
+WHERE Category = &quot;Office Supplies&quot; 
+ORDER by Sales DESC
+LIMIT 10;
+
+SELECT Customer_ID, Customer_Name, Segment, Country, City, State, Category, Sub_Category , Sales
+FROM Superstore
+WHERE Category = &quot;Technology&quot; 
+ORDER by Sales DESC
+LIMIT 10;
+
+SELECT Customer_ID, Customer_Name, Segment, Country, City, State, Category, Sub_Category , Sales
+FROM Superstore
+WHERE Category = &quot;Furniture&quot; 
+ORDER by Sales DESC
+LIMIT 10;
+
+
+-- Top Sales SubCategory
+SELECT Sub_Category, count(Sub_Category)[countSub]
+FROM Superstore
+GROUP by Sub_Category
+ORDER by [countSub] DESC
+
+SELECT Sub_Category, count(Sub_Category) as count, round(avg(Sales),0) [AVG Sales], round(sum(Sales),0)[SUM Sales]
+from Superstore 
+group by Sub_Category
+order by [SUM Sales] desc
+
+-------------------------------------------------------------------------------------------------------
+
+-- Most Sales Product
+
+SELECT Product_Name, count(Product_Name)[CountPro], round(avg(Sales),0) [AVG Sales], round(sum(Sales),0)[SUM Sales]
+FROM Superstore
+GROUP BY Product_Name
+ORDER by [SUM Sales] DESC
+LIMIT 10;
+
+SELECT Customer_ID,Product_Name, Customer_Name, Segment, Country, City, State, Category, Sub_Category , Sales
+FROM Superstore
+WHERE Product_Name = &quot;Canon imageCLASS 2200 Advanced Copier&quot; 
+ORDER by Sales DESC
+
+-- Location
+SELECT City ,Count(City)[CountCity]
+FROM Superstore
+GROUP BY City
+ORDER BY [CountCity] DESC
+
+SELECT City, count(City)[CountCity], round(avg(Sales),0) [AVG Sales], round(sum(Sales),0)[SUM Sales]
+FROM Superstore
+GROUP BY City
+ORDER by [SUM Sales] DESC
+LIMIT 10;
+
+SELECT Customer_ID,Product_Name, Customer_Name, Segment, Country, City, State, Category, Sub_Category , Sales
+FROM Superstore
+ORDER by Sales DESC
+
+-------------------------------------------------------------------------------------------------------
+
+--Sales by Segment
+
+SELECT Segment , count(Segment)[CountSeg]
+FROM Superstore
+GROUP BY Segment
+ORDER BY [CountSeg]
+
+SELECT Segment, count(Segment)[CountSeg], round(avg(Sales),0) [AVG Sales], round(sum(Sales),0)[SUM Sales]
+FROM Superstore
+GROUP BY Segment
+ORDER by [SUM Sales] DESC
+-------------------------------------------------------------------------------------------------------
+
+</sql><current_tab id="1"/></tab_sql></sqlb_project>
