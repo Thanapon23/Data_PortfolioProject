@@ -22,5 +22,7 @@ Examples of promotions in the Chairs category:
 2. Buy any office chair with a free delivery.
 3. Buying a camping chair and get discount for BBQ Kit. 
 
+
 Full PowerBI Dashboard:
-![image](https://user-images.githubusercontent.com/128878040/234518186-e09e5b9e-672a-42d7-b46e-5ad62b2a138e.png)
+
+![image](https://user-images.githubusercontent.com/128878040/234518338-cb3c6ba2-7290-46da-bb3d-bfc598c0b4a9.png)
