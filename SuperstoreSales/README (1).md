@@ -4,9 +4,13 @@ The result from Analysing the data can provide the following business recommenda
 
 ## Following the dashboard mostly sales were in Q4 or the last 4 months of the year.
 
+![image](https://user-images.githubusercontent.com/128878040/234517279-04d71c43-19ce-4f37-b9fd-1a54c9b792ab.png)
+
 Therefore it can conclude that there should be Sales Promotion during that period.
 
 For the recommendation of Sales Promotion is Promotion for Phones and Chairs Category which is got the best selling product.
+
+![image](https://user-images.githubusercontent.com/128878040/234517437-ef261418-5130-4e5e-b361-3745f997e880.png)
 
 Examples of promotions in the Phones category: 
 1. Buying a phone with a limited-time offer for a free trial of a popular streaming service such as Netflix, HBO, PRIME VIDEO.
