@@ -91,7 +91,8 @@ FROM(SELECT * ,Unitcost*Quantity as cost ,  Unitsaleprice*Quantity as Sales
 FROM go_products
 INNER JOIN go_daily_sales)
 GROUP BY Product 
-ORDER BY Profit DESC;
+ORDER BY Profit DESC
+LIMIT 10;
 
 -------------------------------------------------------------------------------------
 
@@ -119,31 +120,48 @@ ORDER By [Count] DESC;
 -------------------------------------------------------------------------------------
 
 /*  Retailer  */
-
--- most sales Retailer
+
+
+-- most sales Retailer
+
 
 SELECT Retailername, count(Retailername)[Count]
 FROM go_retailers
 INNER JOIN go_daily_sales USING (Retailercode)
 INNER JOIN go_1k USING (Retailercode)
 GROUP BY Retailername
-ORDER BY [Count] DESC;
-
+ORDER BY [Count] DESC;
+
+
+
 -- Retailer with Most Ordered
-SELECT Retailercode, Retailername, sum(go_daily_sales.Quantity) as TotalQuantity 
-FROM go_retailers
-INNER JOIN go_daily_sales USING (Retailercode)
-INNER JOIN go_1k USING (Retailercode)
-INNER JOIN go_products USING (Productnumber)
-GROUP BY Retailername
-ORDER BY TotalQuantity DESC;
-
-
--------------------------------------------------------------------------------------
+SELECT Retailercode, Retailername, sum(go_daily_sales.Quantity) as TotalQuantity 
+
+FROM go_retailers
+
+INNER JOIN go_daily_sales USING (Retailercode)
+
+INNER JOIN go_1k USING (Retailercode)
+
+INNER JOIN go_products USING (Productnumber)
+
+GROUP BY Retailername
+
+ORDER BY TotalQuantity DESC;
+
+
+
+
+
+-------------------------------------------------------------------------------------
+
 </sql><sql name="SQL 3">SELECT Producttype , count(Producttype)[Count]  
 FROM go_products
 GROUP BY Producttype
-ORDER By [Count] DESC;
-
-
+ORDER By [Count] DESC;
+
+
+
+
+
 </sql><current_tab id="0"/></tab_sql></sqlb_project>
