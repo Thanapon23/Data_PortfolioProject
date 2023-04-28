@@ -3,6 +3,7 @@
 The Project Containing SQL CODE that using  SQL Joining table and Subquery for answering the business question,
 
 1. What is the best selling product?
+
 ```
 SELECT * , (Quantity * Unitsaleprice)[TotalSales]
 FROM (SELECT go_products.Product ,go_products.Productnumber , go_daily_sales.Quantity, go_daily_sales.Unitsaleprice
@@ -12,7 +13,9 @@ FROM (SELECT go_products.Product ,go_products.Productnumber , go_daily_sales.Qua
 	ORDER BY [TotalSales] DESC;
 ```
 
+
 2. What is the most average sales product?
+
 ```
 SELECT * , (Quantity * Unitsaleprice)[TotalSales] 
 FROM (SELECT go_products.Product ,go_products.Productnumber , go_daily_sales.Quantity, go_daily_sales.Unitsaleprice
@@ -22,6 +25,7 @@ FROM (SELECT go_products.Product ,go_products.Productnumber , go_daily_sales.Qua
 GROUP BY Product
 ORDER BY [TotalSales] DESC;
 ```
+
 
 3. What is top 10 highest profit product? 
 ```
@@ -44,6 +48,8 @@ GROUP BY Producttype
 ORDER By [MostSalesProductType] DESC;
 ```
 
+
+
 5. What brand has the highest sales?
 ```
 SELECT Productbrand , count(Productbrand)[ProductBrandSales]  
@@ -54,6 +60,8 @@ GROUP BY Productbrand
 ORDER By [ProductBrandSales] DESC;
 ```
 
+
+
 6. Which retailer has the highest number of product orders?
 ```
 SELECT Retailername, count(Retailername)[Product_order]
@@ -63,6 +71,8 @@ FROM go_retailers
 GROUP BY Retailername
 ORDER BY [Product_order] DESC;
 ```
+
+
 
 7. Which retailer has ordered the highest quantity of products?
 ```
