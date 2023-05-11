@@ -12,12 +12,12 @@ For the recommendation of Sales Promotion is Promotion for Phones and Chairs Cat
 
 ![image](https://user-images.githubusercontent.com/128878040/234517437-ef261418-5130-4e5e-b361-3745f997e880.png)
 
-Examples of promotions in the Phones category: 
+Marketing strategies for increasing sales in the Phones category: 
 1. Buying a phone with a limited-time offer for a free trial of a popular streaming service such as Netflix, HBO, PRIME VIDEO.
 2. Buying a phone and get a free lottery.
 3. Buying a phone and receive free headphones.
 
-Examples of promotions in the Chairs category:
+Marketing strategies for increasing sales in the Chairs category:
 1. Buy a gaming chair and get 50% discount for any gaming gear.
 2. Buy any office chair with a free delivery.
 3. Buying a camping chair and get discount for BBQ Kit. 
