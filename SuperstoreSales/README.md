@@ -1,5 +1,8 @@
 # Conclusion
 
+# Setiing up the question.
+Which marketing strategies are most effective for increasing sales?
+
 The result from Analysing the data can provide the following business recommendations:
 
 ## Following the dashboard mostly sales were in Q4 or the last 4 months of the year.
