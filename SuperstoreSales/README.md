@@ -1,4 +1,4 @@
-# Question is What is the Effectively Marketing Strategies to increase sales?
+# The Question is: What is the Effectively Marketing Strategies to increase sales?
 
 ## Conclusion
 
