@@ -4,7 +4,7 @@ This Dataset containing information of Career that related to Data.
 
 This Report will help the Human Resource Department to Manage and select personnel that suitable for the organization.
 
-## Asking the question.
+## Posing questions to determine the objectives of the project.
 
 * What is the most common and important position that organization need, And trend of Salary level each year?
 * What is the trend of remote work in data career?
