@@ -4,6 +4,12 @@ This Dataset containing information of Career that related to Data.
 
 This Report will help the Human Resource Department to Manage and select personnel that suitable for the organization.
 
+## Asking the question.
+
+* What is the most common and important position that organization need, And trend of Salary level each year?
+* What is the trend of remote work in data career?
+* What is important position with the Highest Salary in data career?
+
 ## The Visualization of Data Career.
 
 From the dashboard, it shows information related Data Career, including average salary, the movement of average salary each year, And remote work trend.
