@@ -1,6 +1,6 @@
 # Conclusion
 
-##Setiing up the question.
+## Setiing up the question.
 Which marketing strategies are most effective for increasing sales?
 
 The result from Analysing the data can provide the following business recommendations:
