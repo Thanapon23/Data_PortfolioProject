@@ -1,7 +1,6 @@
-# Conclusion
+# Question is Which marketing strategies are most effective for increasing sales?
 
-## Setiing up the question.
-Which marketing strategies are most effective for increasing sales?
+## Conclusion
 
 The result from Analysing the data can provide the following business recommendations:
 
