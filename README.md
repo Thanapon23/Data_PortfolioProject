@@ -2,6 +2,6 @@
 
 This repository contain SQL language Code and PowerBI Visualization projects.
 
-These project using SQL programming to import data into database, clean up the data and Exploratory Data Analysis(EDA). 
+These project using SQL programming to import data into database, clean up the data and Exploratory Data Analysis(EDA), and Descriptive Analysis. 
 
 The data transformed into visualizations to showcase insights gained from the Analysis.
